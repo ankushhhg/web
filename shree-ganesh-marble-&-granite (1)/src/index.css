@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", serif;
+  
+  --color-stone-bg: #FAF9F6;
+  --color-stone-cream: #FAF9F6;
+  --color-stone-dark: #1A1A1A;
+  --color-stone-accent: #C5A059;
+  --color-stone-border: rgba(0, 0, 0, 0.05);
+
+  --color-bg-main: var(--color-stone-bg);
+  --color-text-main: var(--color-stone-dark);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply bg-bg-main text-text-main font-sans transition-colors duration-300;
+  }
+}
+
+.dark {
+  --color-bg-main: var(--color-stone-dark);
+  --color-text-main: var(--color-stone-cream);
+  --color-stone-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer components {
+  .marble-card {
+    @apply bg-white dark:bg-zinc-900 border border-stone-border rounded-[2rem] shadow-xl shadow-black/5 hover:shadow-black/10 transition-all duration-500 overflow-hidden;
+  }
+  
+  .btn-primary {
+    @apply bg-stone-dark dark:bg-stone-cream text-white dark:text-stone-dark px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:opacity-90 transition-all active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border border-stone-dark/10 dark:border-white/20 text-stone-dark dark:text-stone-cream px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-stone-dark dark:hover:bg-stone-cream hover:text-white dark:hover:text-stone-dark transition-all active:scale-95;
+  }
+
+  .text-editorial {
+    @apply font-display text-text-main leading-[1.1] tracking-tight;
+  }
+}
+
